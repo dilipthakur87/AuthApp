@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-native-paper';
-import App from './src';
+import App from './src/routes';
 import { AuthProvider } from './src/context/AuthContext';
 import { theme } from './src/core/theme';
 

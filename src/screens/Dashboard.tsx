@@ -18,7 +18,7 @@ const Dashboard = ({ navigation }: Props) => {
   const doLogout = async() => {
     try {
       await handleLogout()
-      navigation.navigate('LoginScreen')
+      navigation.navigate('Auth')
     } catch (error) {
       
     }

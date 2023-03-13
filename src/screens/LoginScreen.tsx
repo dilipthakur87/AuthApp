@@ -8,9 +8,7 @@ import Button from '../components/Button';
 import TextInput from '../components/TextInput';
 import { theme } from '../core/theme';
 import { emailValidator, passwordValidator } from '../core/utils';
-import { Navigation } from '../types';
 import { useAuthContext } from '../context/AuthContext';
-import { firebaseAuth } from '../context/firebase.config';
 
 const LoginScreen = props => {
   const { navigation } = props;
@@ -21,17 +19,17 @@ const LoginScreen = props => {
   });
   const [password, setPassword] = useState({ value: '', error: '' });
 
-  const { handleLogin, isProcessing, userData, error } = useAuthContext();
+  const { handleLogin, isProcessing, userData } = useAuthContext();
 
   useEffect(() => {
     if (!isProcessing) {
       if (userData) {
         setEmail({ value: '', error: '' });
         setPassword({ value: '', error: '' });
-        navigation.navigate('Dashboard');
+        navigation.navigate('App');
       }
     }
-  }, [userData, isProcessing, error]);
+  }, [userData, isProcessing]);
 
   const _onLoginPressed = async () => {
     const emailError = emailValidator(email.value);
@@ -46,8 +44,6 @@ const LoginScreen = props => {
         await handleLogin(email.value, password.value);
       } catch (error) {}
     }
-
-    // navigation.navigate('Dashboard');
   };
 
   return (

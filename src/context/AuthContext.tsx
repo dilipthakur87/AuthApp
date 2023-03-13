@@ -8,7 +8,7 @@ import {
   User,
   sendPasswordResetEmail,
 } from 'firebase/auth';
-import { AuthState, TrackingProviderProps } from './types';
+import { AuthState, callBackFunction, TrackingProviderProps } from './types';
 import { firebaseAuth } from './firebase.config';
 
 const AuthContext = createContext<AuthState | undefined>(undefined);
@@ -44,7 +44,6 @@ const AuthProvider = ({ children }: TrackingProviderProps) => {
     username: string,
     password: string
   ) => {
-    console.log(' in context api of register');
     setIsProcessing(true);
     createUserWithEmailAndPassword(firebaseAuth, email, password)
       .then((userCredential: UserCredential) => {
@@ -64,7 +63,7 @@ const AuthProvider = ({ children }: TrackingProviderProps) => {
       });
   };
 
-  const handleForgotPassword = async (email: string, callback: any) => {
+  const handleForgotPassword = async (email: string, callback: callBackFunction) => {
     // resetpassword logic here
     sendPasswordResetEmail(firebaseAuth, email).then(() => {
       alert('Please check your email for instructions to reset your password.');
