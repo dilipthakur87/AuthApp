@@ -49,6 +49,8 @@ const AuthProvider = ({ children }: TrackingProviderProps) => {
       .then((userCredential: UserCredential) => {
         // updating the profile with other data
         setIsProcessing(false);
+        // currently the username is not being saved as we are not using firestore here and just setting/getting details form auth user profile that doesn't include username. 
+        // for username, we can just create a new document in firestore under user uid and can store the username there which can later be extracted by getting the doc with user uid (we can get uid from firebaseAuth.currentUser or directly from userData)
         updateProfile(firebaseAuth.currentUser, {
           displayName: name,
         })

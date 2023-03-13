@@ -3,7 +3,11 @@
     "name": "AuthApp",
     "slug": "simple-login-app-firebase",
     "privacy": "public",
-    "platforms": ["ios", "android", "web"],
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,9 +19,19 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1956fd6f-6ea2-4dee-a8f5-f0b7405929af"
+      }
+    },
+    "android": {
+      "package": "com.dilipthakur87.simpleloginappfirebase"
     }
   }
 }
